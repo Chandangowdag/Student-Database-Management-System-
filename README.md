@@ -1,50 +1,119 @@
-# Student Database Management System
+# 🧑‍🎓 Student Database Management System (Java CLI)
 
-## 📌 Overview
-
-This is a **Student Database Management System** developed using Python and SQLite. It provides a simple and interactive Graphical User Interface (GUI) built with `Tkinter` that allows users (typically school or college administrators) to manage student information efficiently.
-
-Key functionalities include:
-- Adding new student records
-- Updating existing records
-- Deleting student entries
-- Searching student data
-- Viewing all stored student records
-
-This system is ideal for educational institutions seeking to manage basic student data locally with a lightweight interface.
+A **console-based student management system** developed using Java. It uses the **DAO (Data Access Object) design pattern** to perform CRUD operations on student records. The application maintains data in-memory using `ArrayList` and provides a menu-driven command-line interface.
 
 ---
 
-## 🛠 Features
+## 📂 Project Files
 
-- 📝 **Add Student**: Enter and store student details like name, roll number, email, gender, contact, date of birth, and address.
-- 🔍 **Search Student**: Search for students based on various criteria (e.g., roll number, name).
-- 🗃 **Display All**: Retrieve and display all student records.
-- ✏️ **Update Record**: Modify existing student information.
-- 🗑 **Delete Record**: Remove a student entry from the database.
-- ♻️ **Clear Fields**: Reset input fields for new entries.
-
----
-
-## 📂 Project Structure
-
-Student-Database-Management-System/
-├── student.py # Main application script with GUI
-├── student.db # SQLite database file (auto-generated after first run)
-├── icon.ico # App icon used in the window
-└── README.md # Project documentation
-
-> Note: The database (`student.db`) will be generated upon first use if it doesn't exist.
+| File Name              | Description |
+|------------------------|-------------|
+| `Mainimpl.java`        | Entry point with CLI-based menu system |
+| `Student.java`         | POJO class containing student attributes |
+| `StudentDAO.java`      | DAO interface with method declarations |
+| `StudentDAOImpl.java`  | Implements the DAO logic using ArrayList |
 
 ---
 
-## 🔧 Requirements
+## 🧠 Core Components
 
-- Python 3.x
-- Tkinter (usually pre-installed with Python)
-- SQLite3 (standard Python library)
+### 1. Student.java
+- A basic Java class (POJO) that contains:
+  - `int id`
+  - `String name`
+  - `String dept`
+  - `String email`
+- Includes constructor, getter, setter, and `toString()` method.
 
-Install any missing modules using pip:
+### 2. StudentDAO.java
+- An interface defining the following methods:
+```java
+void addStudent(Student s);
+void deleteStudent(int id);
+void updateStudent(int id, Student s);
+List<Student> getAllStudents();
+Student getStudentById(int id);
+```
 
+### 3. StudentDAOImpl.java
+- Implements `StudentDAO` using an `ArrayList<Student>` as an in-memory database.
+- Methods:
+  - `addStudent()`: Adds a new student.
+  - `deleteStudent()`: Deletes a student by ID.
+  - `updateStudent()`: Updates a student by ID.
+  - `getAllStudents()`: Returns list of all students.
+  - `getStudentById()`: Returns a student by ID.
+
+### 4. Mainimpl.java
+- Provides a command-line interface using `Scanner`.
+- Displays menu:
+```
+1. Add Student
+2. Delete Student
+3. Update Student
+4. View All Students
+5. Get Student by ID
+6. Exit
+```
+- Reads user input and calls appropriate methods.
+
+---
+
+## ✅ Features
+
+- Add new student
+- Delete student by ID
+- Update existing student details
+- View all student records
+- Retrieve student by ID
+- Menu-based interaction
+
+---
+
+## 🚀 How to Run
+
+1. Compile all Java files:
 ```bash
-pip install tk
+javac *.java
+```
+
+2. Run the main class:
+```bash
+java Mainimpl
+```
+
+---
+
+## 📌 Sample Execution
+
+```text
+--- Student Management System ---
+1. Add Student
+2. Delete Student
+3. Update Student
+4. View All Students
+5. Get Student by ID
+6. Exit
+Enter your choice:
+```
+
+---
+
+## 🔧 Suggestions for Enhancement
+
+- Use file or database (MySQL) for persistent storage.
+- Add input validation (e.g., for email format).
+- Implement GUI using JavaFX or Swing.
+- Add unit tests for DAO logic.
+
+---
+
+## 👨‍💻 Author
+
+Developed by [Your Name]
+
+---
+
+## 📄 License
+
+Open-source project for learning and academic purposes.
