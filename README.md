@@ -108,9 +108,6 @@ Enter your choice:
 
 ---
 
-## 👨‍💻 Author
-
-Developed by [Your Name]
 
 ---
 
